@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button::-moz-focus-inner {
+  border: none;
+}
+
+.body {
+  line-height: 1.4em;
+  background: lightgray !important;
+  color: #111111;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+}
+
+:focus {
+  outline: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.section {
+  box-sizing: border-box;
+  padding-right: 36px;
+  padding-left: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  list-style: none;
+  max-width: 1010px;
+  min-width: 420px;
+  background: #ffffff;
+}
+
+.pagination-layout {
+  height: 100px;
+}
+
+.message {
+  font-size: 20px;
+  margin: auto;
+  padding-top: 45px;
+  height: 100px;
+  width: 251px;
+}
+
+.alert {
+  height: 90px;
+}
+
+.ant-tabs {
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}

@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.card {
+  width: 454px;
+  height: 281px;
+  background: #ffffff;
+  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
+  margin-bottom: 35px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.card__title {
+  margin-top: 10px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #000000;
+  margin-bottom: 2px;
+  width: 190px;
+}
+
+.card img {
+  height: 281px;
+  margin-right: 20px;
+}
+
+.card-flex {
+  display: flex;
+}
+
+.card__release-date {
+  color: #827e7e;
+}
+
+.card__genres {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 54px;
+  align-content: space-around;
+}
+
+.card__genres div {
+  height: 22px;
+  background: #fafafa;
+  border: 1px solid #d9d9d9;
+  margin-right: 8px;
+  white-space: nowrap;
+  line-height: 15px;
+  padding: 2px 4px 1px 5px;
+  border-radius: 2px;
+  margin-bottom: 2px;
+}
+
+.card__description {
+  display: block;
+  padding-right: 20px;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__average-vote {
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  margin-right: 9px;
+}
+
+.vote-color-red {
+  border-color: #e90000;
+}
+
+.vote-color-orange {
+  border-color: #e97e00;
+}
+
+.vote-color-yellow {
+  border-color: #e9d100;
+}
+
+.vote-color-green {
+  border-color: #66e900;
+}
+
+.card__stars {
+  font-size: 14.5px !important;
+}
+
+.card__stars-block {
+  position: absolute;
+  bottom: 4%;
+}
+
+@media (max-width: 600px) {
+  .card__title {
+    width: 90%;
+  }
+
+  .card img {
+    height: 92px;
+    margin-right: 13px;
+  }
+
+  .card__description {
+    position: absolute;
+    width: auto;
+    left: 2%;
+  }
+
+  .card__stars-block {
+    position: absolute;
+    bottom: 4%;
+    right: 2%;
+  }
+
+  .card__average-vote {
+    position: absolute;
+    right: 0px;
+  }
+}

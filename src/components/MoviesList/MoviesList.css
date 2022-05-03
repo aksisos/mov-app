@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.movies-list {
+  margin-top: 32px;
+  padding: 0;
+  list-style: none;
+  background: #ffffff;
+  max-height: 3160px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spin-box {
+  width: 65px;
+  height: 70px;
+  margin: auto;
+  margin-top: 35px;
+}
+
+@media (max-width: 979px) {
+  .movies-list {
+    justify-content: center;
+    max-height: 6340px;
+  }
+}
