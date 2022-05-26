@@ -33,6 +33,7 @@ export const Main = ({
     () => !searchValue && !error && <div className="message">Results shall show up here</div>,
     [error, searchValue]
   );
+
   const nothingFoundMessage = useMemo(
     () =>
       !isLoading && nothingFound && !error && searchValue && <div className="message">Nothing found, try again</div>,

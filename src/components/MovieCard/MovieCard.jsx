@@ -64,7 +64,10 @@ export const MovieCard = ({
         <img src={renderImage(posterPath) || noImage} alt="poster" />
         <div className="text-layout">
           <div className="card__header">
-            <h2 className="card__title"> {originalTitle} </h2>
+            <div className="card__title">
+              {originalTitle}
+              <span className="text">{originalTitle}</span>
+            </div>
             <div className={rateColor(voteAverage)}>{voteAverage}</div>
           </div>
           <div className="card__release-date">{date}</div>
