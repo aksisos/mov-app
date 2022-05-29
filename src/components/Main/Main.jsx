@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { Alert } from 'antd';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { GenreListProvider } from '../../utils/genres-list-context';
 import MoviesList from '../MoviesList';
@@ -29,34 +28,32 @@ export const Main = ({
   updateRatedList,
   switchTab,
 }) => {
-  const emptyMessage = useMemo(
-    () => !searchValue && !error && <div className="message">Results shall show up here</div>,
-    [error, searchValue]
-  );
+  const emptyMessage = () => {
+    if (!searchValue && !error) {
+      return <div className="message">Results shall show up here</div>;
+    }
+  };
 
-  const nothingFoundMessage = useMemo(
-    () =>
-      !isLoading && nothingFound && !error && searchValue && <div className="message">Nothing found, try again</div>,
-    [error, isLoading, nothingFound, searchValue]
-  );
+  const nothingFoundMessage = () => {
+    if (!isLoading && nothingFound && !error && searchValue) {
+      return <div className="message">Nothing found, try again</div>;
+    }
+  };
 
-  const search = useMemo(
-    () =>
-      selectedTab === 'search' && (
-        <SearchForm
-          getMoviesSearch={getMoviesSearch}
-          clearCards={clearCards}
-          searchValue={searchValue}
-          searchChange={searchChange}
-        />
-      ),
-    [clearCards, getMoviesSearch, searchChange, searchValue, selectedTab]
-  );
+  const search = () => {
+    return (
+      <SearchForm
+        getMoviesSearch={getMoviesSearch}
+        clearCards={clearCards}
+        searchValue={searchValue}
+        searchChange={searchChange}
+      />
+    );
+  };
 
-  const searchTabPagination = useMemo(
-    () =>
-      !isLoading &&
-      movies.length > 0 && (
+  const searchTabPagination = () => {
+    if (!isLoading && movies.length > 0) {
+      return (
         <div className="pagination-layout">
           <PaginationComponent
             totalResults={totalResults}
@@ -65,43 +62,42 @@ export const Main = ({
             searchValue={searchValue}
           />
         </div>
-      ),
-    [isLoading, moveToPage, movies.length, page, searchValue, totalResults]
-  );
+      );
+    }
+  };
 
-  const ratedTabPagination = useMemo(
-    () =>
-      !isLoading &&
-      totalRated > 0 && (
+  const ratedTabPagination = () => {
+    if (!isLoading && totalRated > 0) {
+      return (
         <div className="pagination-layout">
           <PaginationComponent totalResults={totalRated} page={ratedPage} moveToPage={moveToPage} />
         </div>
-      ),
-    [isLoading, moveToPage, ratedPage, totalRated]
-  );
+      );
+    }
+  };
 
-  const errorMessage = useMemo(
-    () =>
-      error && (
+  const errorMessage = () => {
+    if (error) {
+      return (
         <div className="alert">
           <Alert message="Error" description="No internet available." type="error" showIcon />
         </div>
-      ),
-    [error]
-  );
+      );
+    }
+  };
 
-  const searchTabContent = useMemo(
-    () =>
-      selectedTab === 'search' && (
+  const searchTabContent = () => {
+    if (selectedTab === 'search') {
+      return (
         <>
-          {search}
+          {search()}
 
           {error ? (
-            errorMessage
+            errorMessage()
           ) : (
             <>
-              {emptyMessage}
-              {nothingFoundMessage}
+              {emptyMessage()}
+              {nothingFoundMessage()}
               <MoviesList
                 movies={movies}
                 isLoading={isLoading}
@@ -110,31 +106,17 @@ export const Main = ({
                 ratedList={ratedList}
                 searchValue={searchValue}
               />
-              {searchTabPagination}
+              {searchTabPagination()}
             </>
           )}
         </>
-      ),
-    [
-      emptyMessage,
-      error,
-      errorMessage,
-      guestId,
-      isLoading,
-      movies,
-      nothingFoundMessage,
-      ratedList,
-      search,
-      searchTabPagination,
-      searchValue,
-      selectedTab,
-      updateRatedList,
-    ]
-  );
+      );
+    }
+  };
 
-  const ratedTabContent = useMemo(
-    () =>
-      selectedTab === 'rated' && (
+  const ratedTabContent = () => {
+    if (selectedTab === 'rated') {
+      return (
         <>
           <MoviesList
             movies={ratedList}
@@ -143,23 +125,18 @@ export const Main = ({
             ratedList={ratedList}
             updateRatedList={updateRatedList}
           />
-          {ratedTabPagination}
+          {ratedTabPagination()}
         </>
-      ),
-    [guestId, isLoading, ratedList, ratedTabPagination, selectedTab, updateRatedList]
-  );
+      );
+    }
+  };
 
   return (
     <section className="section">
       <GenreListProvider value={genresList}>
-        {useMemo(
-          () => (
-            <Navigation switchTab={switchTab} updateRatedList={updateRatedList} />
-          ),
-          [switchTab, updateRatedList]
-        )}
-        {searchTabContent}
-        {ratedTabContent}
+        <Navigation switchTab={switchTab} updateRatedList={updateRatedList} />
+        {searchTabContent()}
+        {ratedTabContent()}
       </GenreListProvider>
     </section>
   );
